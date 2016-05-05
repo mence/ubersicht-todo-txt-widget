@@ -32,6 +32,9 @@ style: """
     color: rgba(#fff, .8)
     text-shadow: 0 1px 0px rgba(#000, .1)
 
+  .list-item a
+    color: #fff
+
   .widget-title
     font-size 12px
     font-weight bold
@@ -54,6 +57,7 @@ update: (output, domElement) ->
   list = $(domElement).find('#todos')
 
   addTodo = (todo) ->
+    todo = todo.replace(/(https?:..[^\s]+)/, "<a href='$1'>$1</a>")
     item = "<div class=\"list-item\">#{todo}</div>"
     list.append item
 
